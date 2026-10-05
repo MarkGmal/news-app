@@ -1,4 +1,4 @@
-class AppImages {
+abstract class AppImages {
   static const String splashScreenLightImage = 'assets/images/splash_screen_light.png';
   static const String splashScreenDarkImage = 'assets/images/splash_screen_dark.png';
   static const String sportsLightImage = 'assets/images/sports_light.png';
