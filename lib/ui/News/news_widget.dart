@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/Model/news_response.dart';
-import 'package:news_app/Model/source_response.dart';
+import 'package:news_app/Model/news_response_model.dart';
+import 'package:news_app/Model/source_response_model.dart';
 import 'package:news_app/apis/http_apis_manger.dart';
+import 'package:news_app/ui/News/news_card.dart';
 import 'package:news_app/utils/app_colors.dart';
 
 class NewsWidget extends StatefulWidget {
@@ -15,6 +16,7 @@ class NewsWidget extends StatefulWidget {
 class _NewsWidgetState extends State<NewsWidget> {
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
     return FutureBuilder<NewsResponse>(
       future: ApisManger.getNewsBySourceId(widget.sourceId.id ?? ""),
       builder: (context, snapshot) {
@@ -69,12 +71,11 @@ class _NewsWidgetState extends State<NewsWidget> {
         }
         // ToDO: response server  ok
         var newsList = snapshot.data?.articles ?? [];
-        return ListView.builder(
+        return ListView.separated(
+          padding: EdgeInsets.only(top: height * 0.02),
+          separatorBuilder: (context, index) => SizedBox(height: height * 0.01),
           itemBuilder: (context, index) {
-            return Text(
-              newsList[index].title ?? "",
-              style: Theme.of(context).textTheme.labelLarge,
-            );
+            return NewsCard(news: newsList[index]);
           },
           itemCount: newsList.length,
         );

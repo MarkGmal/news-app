@@ -3,17 +3,18 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:news_app/Model/news_response.dart';
-import 'package:news_app/Model/source_response.dart';
+import 'package:news_app/Model/news_response_model.dart';
+import 'package:news_app/Model/source_response_model.dart';
 import 'package:news_app/apis/api_constant.dart';
 import 'package:news_app/apis/end_points.dart';
 
 class ApisManger {
-  static Future<SourceResponse> getSources() async {
+  static Future<SourceResponse> getSources({required String categoryId }) async {
     try {
       // https://newsapi.org/v2/top-headlines/sources?apiKey=2965ef6176d9480899b7e5b9cc639ad0
       Uri url = Uri.https(ApiConstant.baseUrl, EndPoints.sourceApi, {
         "apiKey": ApiConstant.apiKey,
+        "category" : categoryId,
       });
       var response = await http.get(url);
       String responseBody = response.body;
