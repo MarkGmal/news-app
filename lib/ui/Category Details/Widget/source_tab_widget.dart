@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/Model/source_response.dart';
-import 'package:news_app/ui/home/Category%20Details/Widget/source_name_widget.dart';
-import 'package:news_app/ui/home/News/news_widget.dart';
+import 'package:news_app/Model/source_response_model.dart';
+import 'package:news_app/ui/Category%20Details/Widget/source_name_widget.dart';
+import 'package:news_app/ui/News/news_widget.dart';
 import 'package:news_app/utils/app_colors.dart';
 
 class SourceTabWidget extends StatefulWidget {
